@@ -6,9 +6,9 @@ import logging
 
 load_dotenv()
 app = Flask(__name__)
-client_id = os.getenv('GOOGLE_CLIENT_ID')
-client_secret = os.getenv('GOOGLE_CLIENT_SECRET')
-app.secret_key = os.getenv('secret_key')
+client_id = os.getenv('504060966146-ntucaatnmibslnch5afr4p3qpkhjdrrj.apps.googleusercontent.com')
+client_secret = os.getenv('AQ0CFtmUuKO6V-O7PjiPQXLD')
+#app.secret_key = os.getenv('AQ0CFtmUuKO6V-O7PjiPQXLD')
 
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 os.environ['OAUTHLIB_RELAX_TOKEN_SCOPE'] = '1'
@@ -37,4 +37,4 @@ def login():
     return redirect(url_for('google.login'))
 
 if __name__ == "__main__":
-    app.run()
+    app.run(port=5555)
