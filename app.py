@@ -26,7 +26,6 @@ from db import init_db_command
 from db import get_db
 
 
-
 class User(UserMixin):
     def __init__(self, id_, name, email, profile_pic):
         self.id = id_
@@ -75,6 +74,8 @@ blueprint = make_google_blueprint(
 )
 app.register_blueprint(blueprint, url_prefix="/login")
 
+
+
 @app.route("/")
 def index():
     google_data = None
@@ -114,4 +115,4 @@ def ping():
             csvfile = csv.reader(ip.csv)
             for row in csvfile:
                 data.append(row)
-        return render_template('data.html', data=data)
+        return render_template('templates/data.html', data=data)
