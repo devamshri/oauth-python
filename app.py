@@ -9,6 +9,7 @@ from flask_login import UserMixin
 import json
 import os
 import sqlite3
+import PingExp
 
 # Ping
 import pandas as pd
@@ -24,6 +25,8 @@ import requests
 from db import init_db_command
 #from user import User
 from db import get_db
+
+PingExp
 
 
 class User(UserMixin):
@@ -91,28 +94,11 @@ def index():
 def login():
     return redirect(url_for('google.login'))
 
+@app.route('/pingip')
+def pingip():
+    return render_template('Table.htm')
+
+
 if __name__ == "__main__":
     app.run(port=5555, debug=True)
 
-@app.route('/ping', methods=['GET', 'POST'])
-def ping():
-    if request.method == 'POST':
-        # Ping Run
-        ip = pd.read_csv("ip.csv")
-        status = []
-
-        for i in ip["IP"]:
-            exit_code = os.system(f"ping {i}")
-            status.append(exit_code==0)
-
-        ip["Status"] = status
-        ip.to_csv("ip.csv", index=False)
-        print(ip)
-
-        f = request.form['csvfile']
-        data = []
-        with open(f) as ip.csv:
-            csvfile = csv.reader(ip.csv)
-            for row in csvfile:
-                data.append(row)
-        return render_template('templates/data.html', data=data)
