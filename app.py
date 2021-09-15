@@ -62,10 +62,7 @@ class User(UserMixin):
 
 load_dotenv()
 app = Flask(__name__)
-#client_id = os.getenv('504060966146-ntucaatnmibslnch5afr4p3qpkhjdrrj.apps.googleusercontent.com')
-#client_secret = os.getenv('AQ0CFtmUuKO6V-O7PjiPQXLD')
 app.secret_key = 'AQ0CFtmUuKO6V-O7PjiPQXLD'
-#print(client_id)
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 os.environ['OAUTHLIB_RELAX_TOKEN_SCOPE'] = '1'
 
@@ -96,6 +93,10 @@ def login():
 
 @app.route('/pingip')
 def pingip():
+    return render_template('Table.html')
+
+@app.route('/test')
+def test():
     return render_template('Table.htm')
 
 
